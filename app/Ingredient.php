@@ -2,13 +2,11 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class User extends Model {
+class Ingredient extends Model {
 
 	protected $fillable = [
 		'name',
-		'email',
-		'password',
-		'salt',
-		'account_type'
+		'category_id'
 	];
+
 }

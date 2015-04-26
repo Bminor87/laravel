@@ -2,13 +2,12 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class User extends Model {
+class Rating extends Model {
 
 	protected $fillable = [
-		'name',
-		'email',
-		'password',
-		'salt',
-		'account_type'
+		'recipe_id',
+		'rating',
+		'rating_count'
 	];
+
 }

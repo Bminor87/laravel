@@ -1,6 +1,10 @@
 <?php namespace App\Http\Controllers;
+use Illuminate\Http\Request;
+use Input;
+use Session;
 
-class HomeController extends Controller {
+class HomeController extends Controller
+{
 
 	/*
 	|--------------------------------------------------------------------------
@@ -20,7 +24,8 @@ class HomeController extends Controller {
 	 */
 	public function __construct()
 	{
-		$this->middleware('auth');
+		// TODO: find out about middleware
+		//$this->middleware('auth');
 	}
 
 	/**
@@ -30,7 +35,33 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
-		return view('home');
+		$data = [
+			'title' => 'Oma Ruokakaappi',
+			'description' => 'Oma Ruokakaappi. Katso mitä ruokaa voit tehdä ruokakaappisi sisällöstä.',
+			'company' => 'Ruokakaappi',
+			'h1' => 'Oma Ruokakaappi',
+			'ingredients' => Session::get('ingredients')
+		];
+
+		return view('kaappi', $data);
+	}
+
+	public function add()
+	{
+		$input = Input::all();
+		$output = "";
+		Session::push('ingredients', $input['add']);
+
+		foreach (Session::get('ingredients') as $name) {
+			$output .= '<div onclick="addIng(\'' . $name . '\',\'remove\')" class="list-group-item list-group-item-success"><span class="pull-right glyphicon glyphicon-minus"></span> ' . $name . "</div>\n";
+		}
+		return $output;
+	}
+
+	public function reset()
+	{
+		Session::forget('ingredients');
+		return "";
 	}
 
 }
