@@ -1,6 +1,5 @@
 <?php namespace App\Http\Controllers;
-use Illuminate\Http\Request;
-use Input;
+use Request;
 use Session;
 
 class HomeController extends Controller
@@ -48,7 +47,7 @@ class HomeController extends Controller
 
 	public function add()
 	{
-		$input = Input::all();
+		$input = Request::all();
 		$output = "";
 		Session::push('ingredients', $input['add']);
 

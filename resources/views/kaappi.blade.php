@@ -10,14 +10,6 @@
                         <h2 class="panel-title">Oma Ruokakaappi</h2>
                     </div>
                     <div id="omaKaappi" class="list-group">
-                        <?php
-                            /*
-                        foreach ($_SESSION['ingredients'] as $name)
-                        {
-                            echo '<div onclick="addIng(\'' . $name . '\',\'remove\')" class="list-group-item list-group-item-success"><span class="pull-right glyphicon glyphicon-minus"></span> ' . $name . "</div>\n";
-                        }
-                            */
-                        ?>
                         @if(count($ingredients))
                             @foreach($ingredients as $name)
                                     <div onclick="addIng('{{ $name }}','remove')" class="list-group-item list-group-item-success"><span class="pull-right glyphicon glyphicon-minus"></span>{{ $name }}</div>
